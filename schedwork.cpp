@@ -78,9 +78,9 @@ bool schedule_helper(
     if(day == sched.size()) {
         return true;
     }
-	// loops through the workers
+		// loops through the workers
     for(size_t i = shifts_filled; i < avail[0].size(); i++) {
-	// if the current worker is valid on the current day and no duplicate workers on a day
+		// if the current worker is valid on the current day and no duplicate workers on a day
 	    if(worker_shifts[i] < maxShifts && avail[day][i] && find(sched[day].begin(), sched[day].end(), i) == sched[day].end()) {
 
 			// adds the worker to the schedule and update information
@@ -98,16 +98,16 @@ bool schedule_helper(
 					return true;
 				}
 			}
-            else if(schedule_helper(avail, dailyNeed, maxShifts, sched, day+1, i, worker_shifts, 0)) {
+      else if(schedule_helper(avail, dailyNeed, maxShifts, sched, day+1, i, worker_shifts, 0)) {
 				return true;
-            }
+      }
 			// otherwise remove the worker from the schedule
 
-            sched[day][shifts_filled] = INVALID_ID;
-            worker_shifts[i]--;
+      sched[day][shifts_filled] = INVALID_ID;
+      worker_shifts[i]--;
+			}
 		}
-	}
-	return false;
+		return false;
 }
 
 
@@ -136,11 +136,11 @@ bool schedule_helper(
 
 
 
-void printSchedule(DailySchedule& sched) {
-	for(unsigned int i = 0; i < sched.size(); i++) {
-		for(unsigned int j = 0; j < sched[i].size(); j++) {
-			cout << sched[i][j] << " ";
-		}
-		cout << endl;
-	}
-}
+// void printSchedule(DailySchedule& sched) {
+// 	for(unsigned int i = 0; i < sched.size(); i++) {
+// 		for(unsigned int j = 0; j < sched[i].size(); j++) {
+// 			cout << sched[i][j] << " ";
+// 		}
+// 		cout << endl;
+// 	}
+// }
